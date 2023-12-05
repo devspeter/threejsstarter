@@ -4,7 +4,6 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 import BoxModel from './model'
 
-
 class useWebGL {
 	constructor() {
         this.canvas = document.querySelector("canvas.webgl");
@@ -37,6 +36,9 @@ class useWebGL {
 		this.camera.position.y = 2;
 		this.camera.position.x = -4;
 
+		var light = new THREE.DirectionalLight(0xffffff, 1);
+		light.position.set(0, 0, 1);
+		this.scene.add(light);
 	}
 
     createRenderer() {
@@ -56,11 +58,25 @@ class useWebGL {
 	}
 
     createModel(){
-        const position = new THREE.Vector3(1, 0, 1)
-        const object3D = new BoxModel(2, position)
-        console.log(object3D)
-        this.scene.add(object3D)
-    }
+		
+		// Define Spirograph parameters
+		var spirographMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+
+		// Create Spirograph lines
+		for (var thetaOffset = 0; thetaOffset < Math.PI * 2; thetaOffset += Math.PI / 30) {
+		  var curve = new THREE.Curve();
+		  curve.getPoint = function(t) {
+			var theta = t * Math.PI * 2 + thetaOffset;
+			var x = (R-r) * Math.cos(theta) + d * Math.cos((R-r)/r * theta);
+			var y = (R-r) * Math.sin(theta) - d * Math.sin((R-r)/r * theta);
+			return new THREE.Vector3(x, y, 0);
+		  };
+		  var points = curve.getPoints(100);
+		  var spirographGeometry = new THREE.BufferGeometry().setFromPoints(points);
+		  var spirographLine = new THREE.Line(spirographGeometry, spirographMaterial);
+		this.scene.add(spirographLine);
+	
+	}	
 
     onResize() {
 		this.screen = {
@@ -74,7 +90,7 @@ class useWebGL {
 	}
 
     update() {
-        this.elapsedTime = this.clock.getElapsedTime();
+       
 		this.renderer.render(this.scene, this.camera);
 		window.requestAnimationFrame(this.update.bind(this));
     }
