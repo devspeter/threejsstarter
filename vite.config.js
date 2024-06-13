@@ -1,10 +1,10 @@
 // vite.config.js
-import glsl from "vite-plugin-glsl"
+// import glsl from "vite-plugin-glsl"
 
 export default {
 	// config options
 	publicDir: "./src/assets",
-	plugins: [glsl()],
+	//plugins: [glsl()],
 	build: {
 		minify: false,
 		rollupOptions: {
@@ -12,8 +12,8 @@ export default {
 			output: {
 				entryFileNames: `[name].js`,
 				chunkFileNames: `[name].js`,
-				assetFileNames: `[name].[ext]`,
-			},
-		},
-	},
+				assetFileNames: `[name].[ext]`
+			}
+		}
+	}
 }

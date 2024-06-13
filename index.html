@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="dist/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Test</title>
-		<link rel="stylesheet" href="./dist/main.css" />
-	</head>
 
-		    <div>
-				<canvas id="canvas" class="webgl"></canvas>
-			</div>
-			<script type="module" src="./dist/main.js"></script>
-		</body>
-	</html>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="dist/favicon.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Medical</title>
+	<link rel="stylesheet" href="./dist/main.css" />
+</head>
+
+<body>
+	<div class="relative">
+		<canvas id="canvas" class="webgl"></canvas>
+		<div class="buttons">
+			<div id="autoRotate" class="aniamtionButton">Auto Rotate</div>
+			<div id="bg" class="aniamtionButton">Backround</div>
+			<div id="1" class="aniamtionButton">Flexion</div>
+			<div id="2" class="aniamtionButton">Extension</div>
+			<div id="3" class="aniamtionButton">LateralFlexionLeft</div>
+			<div id="4" class="aniamtionButton">LateralFlexionRight</div>
+		</div>
+	</div>
+	<script type="module" src="./dist/main.js"></script>
+</body>
+
+</html>

@@ -1,15 +1,5 @@
-canvas {
-	height: 100vh;
-	width: 100%;
-	@apply bg-brand-gray;
-}
-
-.stage {
-	height: 100vh;
-	position: absolute;
-	width: 100%;
-	top: 0;
-	z-index: 10;
+body {
+	margin: 0;
 }
 
 .webgl {
@@ -18,6 +8,44 @@ canvas {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 }
 
+.relative {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #ccd7d6;
+	background-image: url("./bg.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-opacity: 0.3;
+}
+
+.buttons {
+	position: absolute;
+	z-index: 9;
+	bottom: 10px;
+	right: 20px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: end;
+}
+
+.aniamtionButton {
+	background-color: white;
+	padding: 10px;
+	padding: 3px 3px;
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
